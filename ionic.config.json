@@ -1,0 +1,8 @@
+{
+  "name": "Raketbol Score",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "685a5edf"
+}

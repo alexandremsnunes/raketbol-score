@@ -1,25 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Inbox
+      <b>Rakebol Score</b>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">
-        Inbox
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
-  </ion-list>
+<ion-content [fullscreen]="true" >
+  <label *ngIf="player1.name == '' || player2.name == ''">
+    <H1><b>Quem vai jogar?</b></H1>
+  </label>
+  <label *ngIf="player1.name != '' && player2.name != ''">
+    <H1><b>Detalhes da partida:</b></H1>
+  </label>
+  <form class="position" *ngIf="player1.name == ''" [formGroup]="formGroup1" (ngSubmit)="setPlayer1(); $event.preventDefault()">
+    <ion-item >
+      <ion-label position="floating" class="corr">Digite o nome do jogador 1:</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-button class="buttonPosition" expand="block" type="submit" [disabled]="formGroup1.invalid"><b>Confirmar</b></ion-button>
+  </form>
+  <form class="position" *ngIf="player1.name != '' && player2.name == ''" [formGroup]="formGroup2" (ngSubmit)="setPlayer2(); $event.preventDefault()">
+    <ion-item >
+      <ion-label position="floating" class="corr">Agora o nome do Jogador 2:</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-button class="buttonPosition" expand="block" type="submit" [disabled]="formGroup2.invalid"><b>Confirmar</b></ion-button>
+  </form>
+  <div *ngIf="player2.name != ''" class="position"> 
+    <ion-card  position="floating" class="corr">
+      <ion-card-content>
+        <label><h2 class="pla1">{{player1.name}}</h2></label>
+        <label><p><b>VS</b></p></label>
+        <label><h2 class="pla2">{{player2.name}}</h2></label>
+      </ion-card-content>
+    </ion-card>
+    <ion-button class="buttonPosition" expand="block" (click)="start()"><b>JOGAR</b></ion-button>
+  </div>
 </ion-content>

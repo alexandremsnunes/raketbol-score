@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerDTO } from '../models/player.dto';
-import { Router, ActivatedRoute }  from '@angular/Router'
+import { Router, ActivatedRoute }  from '@angular/router'
 import { AlertController } from '@ionic/angular';
 
 

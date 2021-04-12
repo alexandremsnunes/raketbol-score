@@ -1,7 +1,7 @@
 import { Component ,OnInit } from '@angular/core';
 import { PlayerDTO } from '../models/player.dto';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router }  from '@angular/Router'
+import { Router }  from '@angular/router'
 import { NavController} from '@ionic/angular';
 
 @Component({

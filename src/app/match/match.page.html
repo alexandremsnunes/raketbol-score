@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Partida</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+
+  <ion-grid class="positionInitial" *ngIf="final == false">
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="scorePosition">{{player1.score}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <label><h2 class="pla1">{{player1.name}}</h2></label>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="scorePosition">{{player2.score}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <label><h2 class="pla2">{{player2.name}}</h2></label>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="buttosAdd">
+        <ion-button  color="secondary" expand="block" (click)="increaseJ1()">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col class="buttosAdd">
+        <ion-button color="tertiary" expand="block" (click)="increaseJ2()">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-col>     
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="buttosRemove">
+        <ion-button  color="secondary" expand="block" fill="outline" (click)="decreaseJ1()">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col class="buttosRemove">
+        <ion-button color="tertiary" expand="block" fill="outline" (click)="decreaseJ2()">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+      </ion-col>     
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="final == true">
+    <label>
+      <H1><b>Parece que temos um vencedor  </b><ion-icon name="sparkles-outline"></ion-icon></H1>
+    </label>    
+      <ion-card  position="floating" class="corr">
+        
+         
+        <ion-img [src]="'assets/imgs/trofeu.png'" width="10" height="10"></ion-img>
+              
+        
+        <ion-card-content>
+          <label><h2 class="final"><b><i>{{vencedor.name}}</i></b> venceu!!!</h2></label>
+        </ion-card-content>
+      </ion-card>
+      <ion-button class="buttonPosition" expand="block" (click)="home()" color="success"><b>JOGAR NOVAMENTE</b></ion-button>
+  </div>
+
+</ion-content>
